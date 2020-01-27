@@ -6,12 +6,12 @@
 #		make kernel extensions os
 # 	make all
 
-MODULES ?= all base filesystems ipv6 mtd netfilter raid-dm scsi net-bridging
-KERNEL ?= 4.19.10
+MODULES ?= all base filesystems ipv6-netfilter mtd raid-dm scsi
+KERNEL ?= 5.8.9
 KERNEL_ARCH ?= x86_64
-KERNEL_SOURCE ?= https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.19.10.tar.xz
-KERNEL_SHA256 ?= afe968ceeca93eac2173f9f95d90b2eeb489bafdd2083478ac0b7d0704b33e94
-OSDIR ?= /opt/tinycore/10.x/x86_64/release/distribution_files
+KERNEL_SOURCE ?= https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.8.9.tar.xz
+KERNEL_SHA256 ?= 99d8bc1b82f17d7d79f9af4a94af4c0e3772159e9e6e278761bde8569f93e15f
+OSDIR ?= /opt/tinycore/11.x/x86_64/release/distribution_files
 WORKDIR ?= /tmp/tinycore-kernel-build
 
 curdir   	:= $(realpath .)
@@ -98,6 +98,7 @@ os:
 	cp -rp $(WORKDIR)/modules-base/usr/local/lib/modules/$(kernelname)/kernel lib/modules/$(kernelname)/
 	cd $(WORKDIR)/modules-$(KERNEL)/lib/modules/$(kernelname) && \
 	cp modules.alias modules.dep $(WORKDIR)/os-$(osfile)/lib/modules/$(kernelname)/
+	mv $(WORKDIR)/os-$(osfile)/usr/local/lib/modules/5.4.3-tinycore64 $(WORKDIR)/os-$(osfile)/usr/local/lib/modules/$(kernelname)
 	ln -sf /usr/local/lib/modules/$(kernelname)/kernel $(WORKDIR)/os-$(osfile)/lib/modules/$(kernelname)/kernel.tclocal
 	cd $(WORKDIR)/os-$(osfile)/lib/modules/$(kernelname) && \
 	sed -i 's/.ko/.ko.gz/g' modules.dep

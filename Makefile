@@ -7,10 +7,10 @@
 # 	make all
 
 MODULES ?= all base filesystems ipv6-netfilter mtd raid-dm scsi
-KERNEL ?= 5.10.40
+KERNEL ?= 5.10.108
 KERNEL_ARCH ?= x86_64
-KERNEL_SOURCE ?= https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.10.40.tar.xz
-KERNEL_SHA256 ?= 7480803acd7152b1e8248954e219ca9d8d95afa73ec2d8973170939ac44b2f24
+KERNEL_SOURCE ?= https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.10.108.tar.xz
+KERNEL_SHA256 ?= bf6cc2d6e0918b8f34d1cde2fa39a6ad69c45025425048be1a1dac4a5b3641d8
 OSDIR ?= /opt/tinycore/11.x/x86_64/release/distribution_files
 WORKDIR ?= /tmp/tinycore-kernel-build
 
